@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro-Fitness - Workout</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'pro-dark': '#121212',
+                        'pro-gray': '#1E1E1E',
+                        'pro-green': '#2ECC71',
+                        'pro-green-hover': '#27AE60',
+                        'pro-text': '#E0E0E0'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-sans antialiased selection:bg-pro-green selection:text-black">
+
+    <!-- Navbar -->
+    <nav class="bg-pro-dark/95 backdrop-blur-md fixed w-full z-50 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+
+                <!-- Logo -->
+                <a href="index.html" class="flex-shrink-0 flex items-center cursor-pointer group">
+                    <i
+                        class="fa-solid fa-dumbbell text-3xl text-white mr-2 group-hover:text-pro-green transition-colors duration-300"></i>
+                    <span class="font-bold text-2xl text-white tracking-tight">Pro-Fitness</span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html"
+                            class="nav-link text-gray-300 font-medium px-3 py-2 text-sm bg-transparent border-none cursor-pointer hover:text-white transition-colors">Home</a>
+                        <a href="workout.html"
+                            class="nav-link text-pro-green font-medium px-3 py-2 text-sm bg-transparent border-none cursor-pointer hover:text-white transition-colors">Workout</a>
+                        <a href="pricing.html"
+                            class="nav-link text-gray-300 font-medium px-3 py-2 text-sm bg-transparent border-none cursor-pointer hover:text-white transition-colors">Pricing</a>
+                        <a href="rewards.html"
+                            class="nav-link text-gray-300 font-medium px-3 py-2 text-sm bg-transparent border-none cursor-pointer hover:text-white transition-colors">Rewards</a>
+                    </div>
+                </div>
+
+                <!-- Right Side: Search & Buttons -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <!-- Search -->
+                    <div class="relative search-container group">
+                        <input type="text" placeholder="Search"
+                            class="bg-pro-gray text-gray-300 rounded-md py-1.5 px-3 pl-3 pr-10 focus:outline-none focus:ring-0 border border-gray-700 transition-all duration-300 w-48 focus:w-64 placeholder-gray-500 text-sm">
+                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                            <i
+                                class="fa-solid fa-magnifying-glass text-gray-500 group-focus-within:text-pro-green transition-colors"></i>
+                        </div>
+                    </div>
+
+                    <!-- Auth Buttons -->
+                    <a href="login.html"
+                        class="text-white hover:text-pro-green font-medium px-4 py-2 text-sm border border-gray-600 rounded-md hover:border-pro-green transition-all duration-300 btn-glow">
+                        Login
+                    </a>
+                    <a href="register.html"
+                        class="bg-transparent text-white border border-gray-600 hover:bg-pro-green hover:border-pro-green hover:text-black font-medium px-4 py-2 rounded-md text-sm transition-all duration-300 btn-glow">
+                        Register
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" onclick="toggleMenu()"
+                        class="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden bg-pro-gray">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-700">
+                <a href="index.html"
+                    class="text-gray-300 hover:text-white block w-full text-left px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="workout.html"
+                    class="text-pro-green block w-full text-left px-3 py-2 rounded-md text-base font-medium">Workout</a>
+                <a href="pricing.html"
+                    class="text-gray-300 hover:text-white block w-full text-left px-3 py-2 rounded-md text-base font-medium">Pricing</a>
+                <a href="rewards.html"
+                    class="text-gray-300 hover:text-white block w-full text-left px-3 py-2 rounded-md text-base font-medium">Rewards</a>
+                <div class="mt-4 flex flex-col space-y-2 px-3">
+                    <input type="text" placeholder="Search"
+                        class="bg-black/20 text-gray-300 rounded-md py-2 px-3 border border-gray-600 focus:outline-none focus:border-pro-green w-full">
+                    <div class="flex space-x-2 mt-2">
+                        <a href="login.html"
+                            class="flex-1 text-center py-2 border border-gray-600 rounded-md text-white hover:border-pro-green">Login</a>
+                        <a href="register.html"
+                            class="flex-1 text-center py-2 bg-pro-green text-black font-bold rounded-md">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTAINER -->
+    <div class="pt-20">
+
+        <!-- ================= WORKOUT PAGE ================= -->
+        <div id="workout" class="page-section active" style="display: block; opacity: 1;">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+                <div class="text-center mb-10 fade-in-up">
+                    <h2 class="text-4xl font-extrabold text-white">Exercise <span class="text-pro-green">Library</span>
+                    </h2>
+                    <p class="text-gray-400 mt-2">Select a body part to view tutorials.</p>
+                </div>
+                <div class="flex flex-col lg:flex-row gap-8 min-h-[600px]">
+                    <div class="w-full lg:w-2/3">
+                        <div class="sticky top-24 bg-pro-gray rounded-3xl p-4 border border-gray-800 shadow-2xl">
+                            <div class="video-container bg-black rounded-2xl relative overflow-hidden group">
+                                <iframe id="workout-video-frame" src="" title="YouTube video player" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowfullscreen class="hidden w-full h-full absolute inset-0"></iframe>
+                                <img id="workout-gif-display"
+                                    class="hidden w-full h-full object-contain absolute inset-0" src=""
+                                    alt="Exercise Demo">
+                                <div id="video-placeholder"
+                                    class="absolute inset-0 flex flex-col items-center justify-center text-center p-6 bg-pro-dark">
+                                    <i
+                                        class="fa-solid fa-play-circle text-6xl text-pro-green mb-4 opacity-50 group-hover:opacity-100 transition-opacity duration-300"></i>
+                                    <h3 class="text-xl font-bold text-white mb-2">Ready to Sweat?</h3>
+                                    <p class="text-gray-400 text-sm">Select an exercise from the menu to watch the
+                                        tutorial.</p>
+                                </div>
+                            </div>
+                            <div class="mt-4 px-2">
+                                <h3 id="video-title" class="text-2xl font-bold text-white">Select an Exercise</h3>
+                                <p id="video-desc" class="text-gray-400 text-sm mt-1">Detailed instructions will appear
+                                    here.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full lg:w-1/3 space-y-3 fade-in-up" style="transition-delay: 200ms;"
+                        id="workout-menu">
+                        <!-- Content populated by JS -->
+                    </div>
+                </div>
+            </div>
+            <footer class="bg-black py-8 border-t border-gray-900 text-center text-gray-600 text-sm mt-12">
+                <p>&copy; 2024 Pro-Fitness. All rights reserved.</p>
+            </footer>
+        </div>
+
+    </div>
+
+    <!-- Shared Scripts -->
+    <script src="js/main.js"></script>
+
+    <!-- Workout Page Script -->
+    <script>
+        // --- Workout Data & Logic ---
+        const workoutData = {
+            shoulders: {
+                label: "Shoulders",
+                icon: "fa-solid fa-person-arrows-ol",
+                subparts: [
+                    { name: "Front Delt", gif: "assets/Front Delt.gif", desc: "Target your anterior deltoids with controlled front raises." },
+                    { name: "Side Delt", gif: "assets/Side Delt.gif", desc: "Build width with proper lateral raise form." },
+                    { name: "Rear Delt", gif: "assets/Rear Delt.gif", desc: "Essential for posture and shoulder health." }
+                ]
+            },
+            chest: {
+                label: "Chest",
+                icon: "fa-solid fa-child-reaching",
+                subparts: [
+                    { name: "Upper Chest", gif: "assets/Upper Chest.gif", desc: "Incline movements to fill out the upper pecs." },
+                    { name: "Middle Chest", gif: "assets/Middle Chest.gif", desc: "Standard press for overall mass." },
+                    { name: "Lower Chest", gif: "assets/Lower Chest.gif", desc: "Dips and declines for a defined lower sweep." }
+                ]
+            },
+            back: {
+                label: "Back",
+                icon: "fa-solid fa-universal-access",
+                subparts: [
+                    { name: "Lats (Width)", gif: "assets/Lats.gif", desc: "Pullups and pulldowns for that V-taper." },
+                    { name: "Traps (Thickness)", gif: "assets/Traps.gif", desc: "Heavy shrugs and deadlifts." },
+                    { name: "Lower Back", gif: "assets/Lower Back.gif", desc: "Strengthen your core and posterior chain." }
+                ]
+            },
+            legs: {
+                label: "Legs",
+                icon: "fa-solid fa-person-walking",
+                subparts: [
+                    { name: "Quads", gif: "assets/Quads.gif", desc: "Squats and extensions for massive thighs." },
+                    { name: "Hamstrings", gif: "assets/Hamstrings.gif", desc: "Curls and RDLs for back-of-leg development." },
+                    { name: "Calves", gif: "assets/Calves.gif", desc: "Don't skip them! High reps and full range." }
+                ]
+            },
+            arms: {
+                label: "Arms",
+                icon: "fa-solid fa-hand-fist",
+                subparts: [
+                    { name: "Biceps", gif: "assets/Biceps.gif", desc: "Curls for the girls (and boys)." },
+                    { name: "Triceps", gif: "assets/Triceps.gif", desc: "Pushdowns and extensions make up 2/3 of your arm." }
+                ]
+            }
+        };
+
+        function renderWorkoutMenu() {
+            const menuContainer = document.getElementById('workout-menu');
+            if (!menuContainer) return;
+            menuContainer.innerHTML = ''; // Clear existing
+
+            for (const [key, category] of Object.entries(workoutData)) {
+                // Create Accordion Item
+                const item = document.createElement('div');
+                item.className = 'accordion-item bg-pro-gray border border-gray-800 rounded-xl overflow-hidden hover:border-gray-600 transition-colors duration-300';
+
+                // Header
+                const header = document.createElement('button');
+                header.className = 'w-full flex items-center justify-between p-4 text-left focus:outline-none';
+                header.onclick = () => toggleAccordion(item);
+
+                header.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <div class="bg-gray-800 p-2 rounded-lg text-pro-green">
+                            <i class="${category.icon}"></i>
+                        </div>
+                        <span class="font-bold text-white text-lg">${category.label}</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-down text-gray-500 accordion-icon"></i>
+                `;
+
+                // Content (Subparts)
+                const content = document.createElement('div');
+                content.className = 'accordion-content bg-black/20';
+
+                const subList = document.createElement('div');
+                subList.className = 'p-2 space-y-1';
+
+                category.subparts.forEach(sub => {
+                    const btn = document.createElement('button');
+                    btn.className = 'w-full text-left px-4 py-3 rounded-lg text-gray-400 hover:bg-pro-green/10 hover:text-pro-green transition-all duration-200 text-sm font-medium flex items-center justify-between group';
+                    btn.innerHTML = `
+                        <span>${sub.name}</span>
+                        <i class="fa-solid fa-play text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    `;
+                    btn.onclick = (e) => {
+                        e.stopPropagation(); // Prevent accordion toggle
+                        playVideo(sub);
+
+                        // Highlight active sub-button
+                        document.querySelectorAll('.accordion-content button').forEach(b => b.classList.remove('bg-pro-green/20', 'text-pro-green'));
+                        btn.classList.add('bg-pro-green/20', 'text-pro-green');
+                    };
+                    subList.appendChild(btn);
+                });
+
+                content.appendChild(subList);
+                item.appendChild(header);
+                item.appendChild(content);
+                menuContainer.appendChild(item);
+            }
+        }
+
+        function toggleAccordion(item) {
+            const allItems = document.querySelectorAll('.accordion-item');
+            allItems.forEach(i => {
+                if (i !== item) i.classList.remove('active');
+            });
+            item.classList.toggle('active');
+        }
+
+        function playVideo(sub) {
+            const frame = document.getElementById('workout-video-frame');
+            const gifDisplay = document.getElementById('workout-gif-display');
+            const placeholder = document.getElementById('video-placeholder');
+            const titleEl = document.getElementById('video-title');
+            const descEl = document.getElementById('video-desc');
+
+            // Reset displays
+            frame.classList.add('hidden');
+            gifDisplay.classList.add('hidden');
+            placeholder.classList.add('hidden');
+
+            // Stop video if playing
+            frame.src = "";
+
+            if (sub.gif) {
+                gifDisplay.src = sub.gif;
+                gifDisplay.classList.remove('hidden');
+            } else if (sub.videoId) {
+                frame.src = `https://www.youtube.com/embed/${sub.videoId}?autoplay=1&rel=0`;
+                frame.classList.remove('hidden');
+            }
+
+            titleEl.textContent = sub.name;
+            descEl.textContent = sub.desc;
+        }
+
+        // Initialize Menu
+        renderWorkoutMenu();
+    </script>
+    <!-- Profile Script -->
+    <script src="js/profile.js"></script>
+</body>
+
+</html>

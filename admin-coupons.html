@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro-Fitness - Coupon Management</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'pro-dark': '#121212',
+                        'pro-gray': '#1E1E1E',
+                        'pro-green': '#2ECC71',
+                        'pro-green-hover': '#27AE60',
+                        'pro-text': '#E0E0E0'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-sans antialiased bg-pro-dark text-white selection:bg-pro-green selection:text-black">
+
+    <!-- Navbar -->
+    <nav class="bg-pro-gray border-b border-gray-800 fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="admin.html" class="flex items-center hover:text-pro-green transition-colors">
+                        <i class="fa-solid fa-arrow-left text-xl mr-3"></i>
+                        <span class="font-bold text-xl tracking-tight">Back to Dashboard</span>
+                    </a>
+                </div>
+                <div>
+                    <button onclick="logout()" class="text-gray-400 hover:text-white text-sm font-medium">Logout <i
+                            class="fa-solid fa-right-from-bracket ml-1"></i></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="pt-20 pb-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col">
+
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-bold text-white">Coupon Management</h1>
+            <button onclick="toggleCreateCouponModal()"
+                class="bg-pro-green text-black font-bold px-4 py-2 rounded-lg hover:bg-white transition-colors">
+                <i class="fa-solid fa-plus mr-2"></i> Create New Coupon
+            </button>
+        </div>
+
+        <!-- Coupons List -->
+        <div class="bg-pro-gray rounded-2xl border border-gray-800 overflow-hidden">
+            <div class="p-6 border-b border-gray-800">
+                <h2 class="text-xl font-bold text-white">Active Coupons</h2>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm text-gray-400">
+                    <thead class="bg-black/20 text-xs uppercase text-gray-500">
+                        <tr>
+                            <th class="px-6 py-3">Code</th>
+                            <th class="px-6 py-3">Name</th>
+                            <th class="px-6 py-3">Description</th>
+                            <th class="px-6 py-3">Target User</th>
+                            <th class="px-6 py-3">Unlock Condition</th>
+                            <th class="px-6 py-3">Valid Till</th>
+                            <th class="px-6 py-3 text-right">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="coupons-table-body" class="divide-y divide-gray-800">
+                        <!-- Coupon rows will be injected here -->
+                        <tr>
+                            <td colspan="7" class="px-6 py-8 text-center">Loading coupons...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Create Coupon Modal -->
+    <div id="create-coupon-modal"
+        class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[60] hidden flex items-center justify-center p-4">
+        <div
+            class="bg-pro-gray border border-gray-700 rounded-2xl w-full max-w-2xl p-6 shadow-2xl transform transition-all scale-100 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-white">Create New Coupon</h2>
+                <button onclick="toggleCreateCouponModal()" class="text-gray-400 hover:text-white"><i
+                        class="fa-solid fa-xmark text-xl"></i></button>
+            </div>
+            <form id="create-coupon-form" onsubmit="handleCreateCoupon(event)" class="space-y-4">
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-gray-400 text-xs font-bold mb-1">Coupon Name</label>
+                        <input id="coupon-name" class="form-input w-full rounded p-2 text-sm" type="text"
+                            placeholder="e.g. Summer Sale" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-400 text-xs font-bold mb-1">Coupon Code</label>
+                        <div class="flex">
+                            <input id="coupon-code" class="form-input w-full rounded-l p-2 text-sm" type="text"
+                                placeholder="SUMMER2025" required>
+                            <button type="button" onclick="generateCouponCode()"
+                                class="bg-gray-700 hover:bg-gray-600 text-white px-3 py-2 rounded-r text-xs font-bold border border-l-0 border-gray-600">Generate</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-gray-400 text-xs font-bold mb-1">Description</label>
+                    <textarea id="coupon-description" class="form-input w-full rounded p-2 text-sm" rows="2"
+                        placeholder="e.g. 20% off on annual plan" required></textarea>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-gray-400 text-xs font-bold mb-1">Target User</label>
+                        <select id="target-user" class="form-input w-full rounded p-2 text-sm">
+                            <option value="all">All Users</option>
+                            <!-- User options will be injected here -->
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-gray-400 text-xs font-bold mb-1">Valid Till</label>
+                        <input id="valid-till" class="form-input w-full rounded p-2 text-sm" type="date" required>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-gray-400 text-xs font-bold mb-1">Minimum Attendance Required</label>
+                    <input id="unlock-condition" class="form-input w-full rounded p-2 text-sm" type="number" min="0"
+                        placeholder="e.g. 10">
+                    <p class="text-xs text-gray-500 mt-1">Number of attendance records required to unlock this coupon.
+                        Leave empty or 0 if available immediately.</p>
+                </div>
+
+                <div class="pt-4">
+                    <button type="submit" id="create-btn"
+                        class="w-full bg-pro-green text-black font-bold py-3 rounded hover:bg-white transition-colors">Create
+                        Coupon</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/admin-coupons.js"></script>
+    <!-- Profile Script -->
+    <script src="js/profile.js"></script>
+</body>
+
+</html>

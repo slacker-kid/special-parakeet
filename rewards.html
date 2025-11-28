@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro-Fitness - Rewards</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'pro-dark': '#121212',
+                        'pro-gray': '#1E1E1E',
+                        'pro-green': '#2ECC71',
+                        'pro-green-hover': '#27AE60',
+                        'pro-text': '#E0E0E0'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-sans antialiased selection:bg-pro-green selection:text-black">
+
+    <!-- Navbar -->
+    <nav class="bg-pro-dark/95 backdrop-blur-md fixed w-full z-50 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+
+                <!-- Logo -->
+                <a href="index.html" class="flex-shrink-0 flex items-center cursor-pointer group">
+                    <i
+                        class="fa-solid fa-dumbbell text-3xl text-white mr-2 group-hover:text-pro-green transition-colors duration-300"></i>
+                    <span class="font-bold text-2xl text-white tracking-tight">Pro-Fitness</span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html"
+                            class="nav-link text-gray-300 font-medium px-3 py-2 text-sm bg-transparent border-none cursor-pointer hover:text-white transition-colors">Home</a>
+                        <a href="workout.html"
+                            class="nav-link text-gray-300 font-medium px-3 py-2 text-sm bg-transparent border-none cursor-pointer hover:text-white transition-colors">Workout</a>
+                        <a href="pricing.html"
+                            class="nav-link text-gray-300 font-medium px-3 py-2 text-sm bg-transparent border-none cursor-pointer hover:text-white transition-colors">Pricing</a>
+                        <a href="rewards.html"
+                            class="nav-link text-pro-green font-medium px-3 py-2 text-sm bg-transparent border-none cursor-pointer hover:text-white transition-colors">Rewards</a>
+                    </div>
+                </div>
+
+                <!-- Right Side: Search & Buttons -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <!-- Search -->
+                    <div class="relative search-container group">
+                        <input type="text" placeholder="Search"
+                            class="bg-pro-gray text-gray-300 rounded-md py-1.5 px-3 pl-3 pr-10 focus:outline-none focus:ring-0 border border-gray-700 transition-all duration-300 w-48 focus:w-64 placeholder-gray-500 text-sm">
+                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                            <i
+                                class="fa-solid fa-magnifying-glass text-gray-500 group-focus-within:text-pro-green transition-colors"></i>
+                        </div>
+                    </div>
+
+                    <!-- Auth Buttons -->
+                    <a href="login.html"
+                        class="text-white hover:text-pro-green font-medium px-4 py-2 text-sm border border-gray-600 rounded-md hover:border-pro-green transition-all duration-300 btn-glow">
+                        Login
+                    </a>
+                    <a href="register.html"
+                        class="bg-transparent text-white border border-gray-600 hover:bg-pro-green hover:border-pro-green hover:text-black font-medium px-4 py-2 rounded-md text-sm transition-all duration-300 btn-glow">
+                        Register
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" onclick="toggleMenu()"
+                        class="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden bg-pro-gray">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-700">
+                <a href="index.html"
+                    class="text-gray-300 hover:text-white block w-full text-left px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="workout.html"
+                    class="text-gray-300 hover:text-white block w-full text-left px-3 py-2 rounded-md text-base font-medium">Workout</a>
+                <a href="pricing.html"
+                    class="text-gray-300 hover:text-white block w-full text-left px-3 py-2 rounded-md text-base font-medium">Pricing</a>
+                <a href="rewards.html"
+                    class="text-pro-green block w-full text-left px-3 py-2 rounded-md text-base font-medium">Rewards</a>
+                <div class="mt-4 flex flex-col space-y-2 px-3">
+                    <input type="text" placeholder="Search"
+                        class="bg-black/20 text-gray-300 rounded-md py-2 px-3 border border-gray-600 focus:outline-none focus:border-pro-green w-full">
+                    <div class="flex space-x-2 mt-2">
+                        <a href="login.html"
+                            class="flex-1 text-center py-2 border border-gray-600 rounded-md text-white hover:border-pro-green">Login</a>
+                        <a href="register.html"
+                            class="flex-1 text-center py-2 bg-pro-green text-black font-bold rounded-md">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTAINER -->
+    <div class="pt-20">
+
+        <!-- ================= REWARDS PAGE (New) ================= -->
+        <div id="rewards" class="page-section active" style="display: block; opacity: 1;">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+                <div class="text-center mb-16 fade-in-up">
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4">Your <span
+                            class="text-pro-green">Rewards</span></h2>
+                    <p class="text-gray-400 text-lg max-w-2xl mx-auto">Stay consistent, build your streak, and unlock
+                        exclusive perks.</p>
+                </div>
+
+                <!-- Stats Dashboard -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+                    <!-- Current Streak Card -->
+                    <div class="bg-pro-gray border border-gray-800 rounded-3xl p-8 flex flex-col items-center justify-center relative overflow-hidden fade-in-up"
+                        style="transition-delay: 100ms;">
+                        <div class="absolute -top-10 -right-10 w-40 h-40 bg-pro-green/10 rounded-full blur-3xl"></div>
+                        <div class="text-center z-10">
+                            <i class="fa-solid fa-fire text-6xl text-orange-500 mb-4 animate-pulse"></i>
+                            <h3 class="text-5xl font-extrabold text-white">0 <span
+                                    class="text-xl text-gray-400">Days</span></h3>
+                            <p class="text-pro-green font-bold mt-2">Current Streak</p>
+                            <p class="text-gray-500 text-sm mt-4">Keep going to reach Gold Status!</p>
+                        </div>
+                    </div>
+
+                    <!-- Attendance Calendar Card -->
+                    <div class="lg:col-span-2 bg-pro-gray border border-gray-800 rounded-3xl p-8 fade-in-up"
+                        style="transition-delay: 200ms;">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-xl font-bold text-white">Attendance History</h3>
+                            <span class="text-sm text-gray-400">This Month</span>
+                        </div>
+                        <div class="grid grid-cols-7 gap-4">
+                            <!-- Calendar will be injected here -->
+                        </div>
+                        <div class="mt-6 bg-black/30 rounded-xl p-4 flex items-start gap-3">
+                            <i class="fa-solid fa-circle-info text-pro-green mt-1"></i>
+                            <p class="text-gray-400 text-sm">
+                                Check in at the front desk to log your attendance. Maintaining a 7-day streak unlocks
+                                premium coupons.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coupons Section -->
+                <h3 class="text-3xl font-bold text-white mb-8 border-l-4 border-pro-green pl-4 fade-in-up">Available
+                    Rewards</h3>
+                <div id="coupons-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Coupons will be injected here -->
+                    <div class="col-span-full text-center py-10 text-gray-500">
+                        <i class="fa-solid fa-spinner fa-spin text-2xl mb-2"></i>
+                        <p>Loading rewards...</p>
+                    </div>
+                </div>
+            </div>
+            <footer class="bg-black py-8 border-t border-gray-900 text-center text-gray-600 text-sm">
+                <script src="js/api.js"></script>
+                <script>
+                    document.addEventListener('DOMContentLoaded', async () => {
+                        const user = JSON.parse(localStorage.getItem('user'));
+                        if (!user) {
+                            window.location.href = 'login.html';
+                            return;
+                        }
+
+                        // Fetch Attendance & Coupons
+                        try {
+                            const [attendanceResponse, couponsResponse] = await Promise.all([
+                                api.getMemberAttendance(user.email),
+                                api.getCoupons()
+                            ]);
+
+                            let currentStreak = 0;
+
+                            if (attendanceResponse.result === 'success') {
+                                renderRewardsCalendar(attendanceResponse.attendance);
+                                currentStreak = calculateStreak(attendanceResponse.attendance);
+                            }
+
+                            if (couponsResponse.result === 'success') {
+                                renderCoupons(couponsResponse.coupons, currentStreak, user);
+                            } else {
+                                document.getElementById('coupons-container').innerHTML = '<p class="text-red-500 col-span-full text-center">Failed to load rewards.</p>';
+                            }
+
+                        } catch (e) {
+                            console.error('Error loading rewards data', e);
+                            document.getElementById('coupons-container').innerHTML = '<p class="text-red-500 col-span-full text-center">Error loading rewards.</p>';
+                        }
+                    });
+
+                    function renderRewardsCalendar(dates) {
+                        const calendarGrid = document.querySelector('.grid-cols-7.gap-4'); // Targeting the calendar grid
+                        if (!calendarGrid) return;
+
+                        const today = new Date();
+                        const currentMonth = today.getMonth();
+                        const currentYear = today.getFullYear();
+
+                        const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+                        let html = '';
+
+                        // Headers
+                        days.forEach(d => {
+                            html += `<div class="text-center text-gray-400 text-xs font-bold pb-2">${d}</div>`;
+                        });
+
+                        // Get days in month
+                        const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+                        const firstDayIndex = new Date(currentYear, currentMonth, 1).getDay();
+
+                        // Empty slots for previous month
+                        for (let i = 0; i < firstDayIndex; i++) {
+                            html += `<div></div>`;
+                        }
+
+                        // Days
+                        for (let i = 1; i <= daysInMonth; i++) {
+                            const dateStr = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+                            const isPresent = dates.includes(dateStr);
+
+                            // Styling based on reference image:
+                            // Attended: Green background, black checkmark
+                            // Unattended: Dark gray background, white number
+                            const activeClass = isPresent
+                                ? 'bg-pro-green text-black'
+                                : 'bg-white/5 text-gray-400';
+
+                            const content = isPresent ? '<i class="fa-solid fa-check"></i>' : i;
+
+                            html += `
+                                <div class="aspect-square flex items-center justify-center rounded-md ${activeClass} text-sm font-bold transition-all duration-300">
+                                    ${content}
+                                </div>
+                            `;
+                        }
+
+                        calendarGrid.innerHTML = html;
+
+                        // Update Title to "This Month"
+                        const titleSpan = document.querySelector('.flex.justify-between.items-center.mb-6 span');
+                        if (titleSpan) titleSpan.innerText = new Date().toLocaleString('default', { month: 'long', year: 'numeric' });
+                    }
+
+                    function calculateStreak(dates) {
+                        // Simple streak calculation: consecutive days ending today or yesterday
+                        // Sort dates
+                        const sortedDates = dates.sort();
+                        if (sortedDates.length === 0) {
+                            updateStreakUI(0);
+                            return 0;
+                        }
+
+                        let streak = 0;
+                        const today = new Date();
+
+                        // Helper to get local YYYY-MM-DD string
+                        const getLocalStr = (d) => {
+                            const year = d.getFullYear();
+                            const month = String(d.getMonth() + 1).padStart(2, '0');
+                            const day = String(d.getDate()).padStart(2, '0');
+                            return `${year}-${month}-${day}`;
+                        };
+
+                        const todayStr = getLocalStr(today);
+                        let currentDate = new Date(today);
+
+                        // If today is not present, check if yesterday was (streak might be active but not extended today yet)
+                        if (!dates.includes(todayStr)) {
+                            currentDate.setDate(currentDate.getDate() - 1);
+                            const yesterdayStr = getLocalStr(currentDate);
+                            if (!dates.includes(yesterdayStr)) {
+                                updateStreakUI(0);
+                                return 0;
+                            }
+                        }
+
+                        // Count backwards
+                        while (true) {
+                            const dateStr = getLocalStr(currentDate);
+                            if (dates.includes(dateStr)) {
+                                streak++;
+                                currentDate.setDate(currentDate.getDate() - 1);
+                            } else {
+                                break;
+                            }
+                        }
+
+                        updateStreakUI(streak);
+                        return streak;
+                    }
+
+                    function updateStreakUI(days) {
+                        const streakEl = document.querySelector('.text-5xl.font-extrabold.text-white');
+                        if (streakEl) {
+                            streakEl.innerHTML = `${days} <span class="text-xl text-gray-400">Days</span>`;
+                        }
+                    }
+
+                    function renderCoupons(coupons, streak, user) {
+                        const container = document.getElementById('coupons-container');
+                        if (!coupons || coupons.length === 0) {
+                            container.innerHTML = '<p class="text-gray-500 col-span-full text-center">No rewards available at the moment.</p>';
+                            return;
+                        }
+
+                        container.innerHTML = coupons.map((coupon, index) => {
+                            // Check target user
+                            if (coupon.target_user !== 'all' && coupon.target_user !== user.email) {
+                                return ''; // Skip if not for this user
+                            }
+
+                            const unlockCondition = parseInt(coupon.unlock_condition) || 0;
+                            const isLocked = streak < unlockCondition;
+
+                            // Determine styles based on locked status
+                            const cardClass = isLocked
+                                ? 'opacity-75 grayscale hover:grayscale-0'
+                                : 'hover:border-pro-green';
+
+                            const statusBadge = isLocked
+                                ? '<span class="bg-gray-700 text-gray-300 text-xs font-bold px-2 py-1 rounded">LOCKED</span>'
+                                : '<span class="bg-pro-green text-black text-xs font-bold px-2 py-1 rounded">AVAILABLE</span>';
+
+                            const iconBg = isLocked ? 'bg-purple-500/20 text-purple-400' : 'bg-pro-green/20 text-pro-green';
+                            const icon = isLocked ? 'fa-user-clock' : 'fa-gift';
+
+                            const overlay = isLocked ? `
+                                <div class="absolute inset-0 bg-black/50 z-10 flex flex-col items-center justify-center rounded-2xl backdrop-blur-[1px]">
+                                    <i class="fa-solid fa-lock text-3xl text-gray-400 mb-2"></i>
+                                    <p class="text-white font-bold text-sm">Requires ${unlockCondition}-Day Streak</p>
+                                </div>
+                            ` : '';
+
+                            const button = isLocked
+                                ? `<button disabled class="w-full py-3 rounded-lg font-bold bg-gray-700 text-gray-400 cursor-not-allowed">Keep Working Out</button>`
+                                : `<button onclick="claimCoupon(this, '${coupon.code}')" class="w-full py-3 rounded-lg font-bold bg-white text-black hover:bg-pro-green transition-all duration-300 group-hover:shadow-[0_0_15px_rgba(46,204,113,0.4)]">Claim Reward</button>`;
+
+                            return `
+                                <div class="bg-pro-gray rounded-2xl border border-gray-800 p-6 relative group transition-all duration-300 fade-in-up ${cardClass}" style="transition-delay: ${index * 100}ms;">
+                                    ${overlay}
+                                    <div class="flex justify-between items-start mb-4">
+                                        <div class="${iconBg} p-3 rounded-xl">
+                                            <i class="fa-solid ${icon} text-xl"></i>
+                                        </div>
+                                        ${statusBadge}
+                                    </div>
+                                    <h4 class="text-xl font-bold text-white mb-2">${coupon.name}</h4>
+                                    <p class="text-gray-400 text-sm mb-6">${coupon.description}</p>
+                                    ${button}
+                                </div>
+                            `;
+                        }).join('');
+                    }
+
+                    // --- Coupon Logic ---
+                    function claimCoupon(btn, code) {
+                        const originalText = btn.innerText;
+                        btn.innerHTML = '<i class="fa-solid fa-check mr-2"></i> Code Copied!';
+                        btn.classList.remove('bg-white', 'text-black', 'hover:bg-pro-green');
+                        btn.classList.add('bg-pro-green', 'text-black', 'cursor-default');
+
+                        // Copy to clipboard
+                        navigator.clipboard.writeText(code).then(() => {
+                            // Success feedback
+                        }).catch(err => {
+                            console.error('Failed to copy: ', err);
+                        });
+
+                        setTimeout(() => {
+                            btn.innerHTML = 'Apply at Checkout <i class="fa-solid fa-arrow-right ml-2"></i>';
+                        }, 1500);
+                    }
+                </script>
+                <!-- Profile Script -->
+                <script src="js/profile.js"></script>
+            </footer>
+        </div>
+    </div>
+</body>
+
+</html>

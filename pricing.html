@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro-Fitness - Pricing</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'pro-dark': '#121212',
+                        'pro-gray': '#1E1E1E',
+                        'pro-green': '#2ECC71',
+                        'pro-green-hover': '#27AE60',
+                        'pro-text': '#E0E0E0'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-sans antialiased selection:bg-pro-green selection:text-black">
+
+    <!-- Navbar -->
+    <nav class="bg-pro-dark/95 backdrop-blur-md fixed w-full z-50 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+
+                <!-- Logo -->
+                <a href="index.html" class="flex-shrink-0 flex items-center cursor-pointer group">
+                    <i
+                        class="fa-solid fa-dumbbell text-3xl text-white mr-2 group-hover:text-pro-green transition-colors duration-300"></i>
+                    <span class="font-bold text-2xl text-white tracking-tight">Pro-Fitness</span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html"
+                            class="nav-link text-gray-300 font-medium px-3 py-2 text-sm bg-transparent border-none cursor-pointer hover:text-white transition-colors">Home</a>
+                        <a href="workout.html"
+                            class="nav-link text-gray-300 font-medium px-3 py-2 text-sm bg-transparent border-none cursor-pointer hover:text-white transition-colors">Workout</a>
+                        <a href="pricing.html"
+                            class="nav-link text-pro-green font-medium px-3 py-2 text-sm bg-transparent border-none cursor-pointer hover:text-white transition-colors">Pricing</a>
+                        <a href="rewards.html"
+                            class="nav-link text-gray-300 font-medium px-3 py-2 text-sm bg-transparent border-none cursor-pointer hover:text-white transition-colors">Rewards</a>
+                    </div>
+                </div>
+
+                <!-- Right Side: Search & Buttons -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <!-- Search -->
+                    <div class="relative search-container group">
+                        <input type="text" placeholder="Search"
+                            class="bg-pro-gray text-gray-300 rounded-md py-1.5 px-3 pl-3 pr-10 focus:outline-none focus:ring-0 border border-gray-700 transition-all duration-300 w-48 focus:w-64 placeholder-gray-500 text-sm">
+                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                            <i
+                                class="fa-solid fa-magnifying-glass text-gray-500 group-focus-within:text-pro-green transition-colors"></i>
+                        </div>
+                    </div>
+
+                    <!-- Auth Buttons -->
+                    <a href="login.html"
+                        class="text-white hover:text-pro-green font-medium px-4 py-2 text-sm border border-gray-600 rounded-md hover:border-pro-green transition-all duration-300 btn-glow">
+                        Login
+                    </a>
+                    <a href="register.html"
+                        class="bg-transparent text-white border border-gray-600 hover:bg-pro-green hover:border-pro-green hover:text-black font-medium px-4 py-2 rounded-md text-sm transition-all duration-300 btn-glow">
+                        Register
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" onclick="toggleMenu()"
+                        class="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden bg-pro-gray">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-700">
+                <a href="index.html"
+                    class="text-gray-300 hover:text-white block w-full text-left px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="workout.html"
+                    class="text-gray-300 hover:text-white block w-full text-left px-3 py-2 rounded-md text-base font-medium">Workout</a>
+                <a href="pricing.html"
+                    class="text-pro-green block w-full text-left px-3 py-2 rounded-md text-base font-medium">Pricing</a>
+                <a href="rewards.html"
+                    class="text-gray-300 hover:text-white block w-full text-left px-3 py-2 rounded-md text-base font-medium">Rewards</a>
+                <div class="mt-4 flex flex-col space-y-2 px-3">
+                    <input type="text" placeholder="Search"
+                        class="bg-black/20 text-gray-300 rounded-md py-2 px-3 border border-gray-600 focus:outline-none focus:border-pro-green w-full">
+                    <div class="flex space-x-2 mt-2">
+                        <a href="login.html"
+                            class="flex-1 text-center py-2 border border-gray-600 rounded-md text-white hover:border-pro-green">Login</a>
+                        <a href="register.html"
+                            class="flex-1 text-center py-2 bg-pro-green text-black font-bold rounded-md">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTAINER -->
+    <div class="pt-20">
+
+        <!-- ================= PRICING PAGE ================= -->
+        <div id="pricing" class="page-section active" style="display: block; opacity: 1;">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+                <div class="text-center mb-16 fade-in-up">
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4">Flexible <span
+                            class="text-pro-green">Membership</span> Plans</h2>
+                    <p class="text-gray-400 text-lg max-w-2xl mx-auto">Choose the plan that fits your lifestyle. No
+                        hidden fees, cancel anytime.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- BASIC -->
+                    <div class="bg-pro-gray border border-gray-800 rounded-3xl p-8 flex flex-col hover:border-gray-600 transition-all duration-300 hover:transform hover:-translate-y-2 shadow-xl fade-in-up"
+                        style="transition-delay: 100ms;">
+                        <div class="mb-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">Basic</h3>
+                            <p class="text-gray-400 text-sm">For the casual gym-goer</p>
+                        </div>
+                        <div class="mb-8"><span class="text-4xl font-bold text-white">$29</span><span
+                                class="text-gray-500">/month</span></div>
+                        <ul class="space-y-4 mb-8 flex-grow">
+                            <li class="flex items-center text-gray-300 text-sm"><i
+                                    class="fa-solid fa-check check-icon"></i> Access to gym floor</li>
+                            <li class="flex items-center text-gray-300 text-sm"><i
+                                    class="fa-solid fa-check check-icon"></i> Locker room access</li>
+                        </ul>
+                        <a href="register.html"
+                            class="w-full block text-center border border-pro-green text-pro-green hover:bg-pro-green hover:text-black font-bold py-3 rounded-xl transition-all duration-300">Choose
+                            Basic</a>
+                    </div>
+                    <!-- PRO -->
+                    <div class="bg-pro-gray border-2 border-pro-green rounded-3xl p-8 flex flex-col relative transform md:-translate-y-4 shadow-[0_0_20px_rgba(46,204,113,0.15)] hover:shadow-[0_0_30px_rgba(46,204,113,0.3)] transition-all duration-300 fade-in-up"
+                        style="transition-delay: 200ms;">
+                        <div
+                            class="absolute top-0 right-0 bg-pro-green text-black text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-2xl">
+                            POPULAR</div>
+                        <div class="mb-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">Pro Athlete</h3>
+                            <p class="text-gray-400 text-sm">Best for serious results</p>
+                        </div>
+                        <div class="mb-8"><span class="text-5xl font-bold text-pro-green">$59</span><span
+                                class="text-gray-500">/month</span></div>
+                        <ul class="space-y-4 mb-8 flex-grow">
+                            <li class="flex items-center text-white text-sm font-medium"><i
+                                    class="fa-solid fa-check check-icon"></i> 24/7 Gym Access</li>
+                            <li class="flex items-center text-white text-sm font-medium"><i
+                                    class="fa-solid fa-check check-icon"></i> All Group Classes Included</li>
+                        </ul>
+                        <a href="register.html"
+                            class="w-full block text-center bg-pro-green text-black hover:bg-white font-bold py-4 rounded-xl transition-all duration-300 shadow-lg">Get
+                            Started Pro</a>
+                    </div>
+                    <!-- ELITE -->
+                    <div class="bg-pro-gray border border-gray-800 rounded-3xl p-8 flex flex-col hover:border-gray-600 transition-all duration-300 hover:transform hover:-translate-y-2 shadow-xl fade-in-up"
+                        style="transition-delay: 300ms;">
+                        <div class="mb-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">Elite</h3>
+                            <p class="text-gray-400 text-sm">Full access & VIP treatment</p>
+                        </div>
+                        <div class="mb-8"><span class="text-4xl font-bold text-white">$99</span><span
+                                class="text-gray-500">/month</span></div>
+                        <ul class="space-y-4 mb-8 flex-grow">
+                            <li class="flex items-center text-gray-300 text-sm"><i
+                                    class="fa-solid fa-check check-icon"></i> All Pro Features</li>
+                            <li class="flex items-center text-gray-300 text-sm"><i
+                                    class="fa-solid fa-check check-icon"></i> Unlimited Tanning</li>
+                        </ul>
+                        <a href="register.html"
+                            class="w-full block text-center border border-gray-600 text-white hover:border-pro-green hover:text-pro-green font-bold py-3 rounded-xl transition-all duration-300">Go
+                            Elite</a>
+                    </div>
+                </div>
+            </div>
+            <footer class="bg-black py-8 border-t border-gray-900 text-center text-gray-600 text-sm">
+                <p>&copy; 2024 Pro-Fitness. All rights reserved.</p>
+            </footer>
+        </div>
+
+    </div>
+
+    <!-- Shared Scripts -->
+    <script src="js/main.js"></script>
+    <!-- Profile Script -->
+    <script src="js/profile.js"></script>
+</body>
+
+</html>

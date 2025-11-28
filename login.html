@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro-Fitness - Login</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'pro-dark': '#121212',
+                        'pro-gray': '#1E1E1E',
+                        'pro-green': '#2ECC71',
+                        'pro-green-hover': '#27AE60',
+                        'pro-text': '#E0E0E0'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-sans antialiased selection:bg-pro-green selection:text-black">
+
+    <!-- Navbar -->
+    <nav class="bg-pro-dark/95 backdrop-blur-md fixed w-full z-50 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+
+                <!-- Logo -->
+                <a href="index.html" class="flex-shrink-0 flex items-center cursor-pointer group">
+                    <i
+                        class="fa-solid fa-dumbbell text-3xl text-white mr-2 group-hover:text-pro-green transition-colors duration-300"></i>
+                    <span class="font-bold text-2xl text-white tracking-tight">Pro-Fitness</span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html"
+                            class="nav-link text-gray-300 font-medium px-3 py-2 text-sm bg-transparent border-none cursor-pointer hover:text-white transition-colors">Home</a>
+                        <a href="workout.html"
+                            class="nav-link text-gray-300 font-medium px-3 py-2 text-sm bg-transparent border-none cursor-pointer hover:text-white transition-colors">Workout</a>
+                        <a href="pricing.html"
+                            class="nav-link text-gray-300 font-medium px-3 py-2 text-sm bg-transparent border-none cursor-pointer hover:text-white transition-colors">Pricing</a>
+                        <a href="rewards.html"
+                            class="nav-link text-gray-300 font-medium px-3 py-2 text-sm bg-transparent border-none cursor-pointer hover:text-white transition-colors">Rewards</a>
+                    </div>
+                </div>
+
+                <!-- Right Side: Search & Buttons -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <!-- Search -->
+                    <div class="relative search-container group">
+                        <input type="text" placeholder="Search"
+                            class="bg-pro-gray text-gray-300 rounded-md py-1.5 px-3 pl-3 pr-10 focus:outline-none focus:ring-0 border border-gray-700 transition-all duration-300 w-48 focus:w-64 placeholder-gray-500 text-sm">
+                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                            <i
+                                class="fa-solid fa-magnifying-glass text-gray-500 group-focus-within:text-pro-green transition-colors"></i>
+                        </div>
+                    </div>
+
+                    <!-- Auth Buttons -->
+                    <a href="login.html"
+                        class="text-white hover:text-pro-green font-medium px-4 py-2 text-sm border border-gray-600 rounded-md hover:border-pro-green transition-all duration-300 btn-glow">
+                        Login
+                    </a>
+                    <a href="register.html"
+                        class="bg-transparent text-white border border-gray-600 hover:bg-pro-green hover:border-pro-green hover:text-black font-medium px-4 py-2 rounded-md text-sm transition-all duration-300 btn-glow">
+                        Register
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" onclick="toggleMenu()"
+                        class="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden bg-pro-gray">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-700">
+                <a href="index.html"
+                    class="text-gray-300 hover:text-white block w-full text-left px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="workout.html"
+                    class="text-gray-300 hover:text-white block w-full text-left px-3 py-2 rounded-md text-base font-medium">Workout</a>
+                <a href="pricing.html"
+                    class="text-gray-300 hover:text-white block w-full text-left px-3 py-2 rounded-md text-base font-medium">Pricing</a>
+                <a href="rewards.html"
+                    class="text-gray-300 hover:text-white block w-full text-left px-3 py-2 rounded-md text-base font-medium">Rewards</a>
+                <div class="mt-4 flex flex-col space-y-2 px-3">
+                    <input type="text" placeholder="Search"
+                        class="bg-black/20 text-gray-300 rounded-md py-2 px-3 border border-gray-600 focus:outline-none focus:border-pro-green w-full">
+                    <div class="flex space-x-2 mt-2">
+                        <a href="login.html"
+                            class="flex-1 text-center py-2 border border-gray-600 rounded-md text-white hover:border-pro-green">Login</a>
+                        <a href="register.html"
+                            class="flex-1 text-center py-2 bg-pro-green text-black font-bold rounded-md">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTAINER -->
+    <div class="pt-20">
+
+        <!-- ================= LOGIN PAGE ================= -->
+        <div id="login" class="page-section active" style="display: block; opacity: 1;">
+            <div class="min-h-[calc(100vh-80px)] flex items-center justify-center p-4">
+                <div
+                    class="bg-pro-gray/50 backdrop-blur-sm rounded-3xl shadow-2xl border border-gray-800 overflow-hidden w-full max-w-5xl flex flex-col md:flex-row min-h-[600px] animate-fade-in">
+                    <!-- Left Side: Image -->
+                    <div class="w-full md:w-1/2 relative bg-black">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-pro-dark via-transparent to-transparent z-10">
+                        </div>
+                        <img src="assets/login-illustration.png"
+                            class="absolute inset-0 w-full h-full object-cover grayscale opacity-80"
+                            alt="Gym Motivation">
+                        <div class="absolute bottom-10 left-10 z-20">
+                            <h2 class="text-3xl font-bold text-white mb-2">Welcome Back</h2>
+                            <p class="text-pro-green">Keep pushing your limits.</p>
+                        </div>
+                    </div>
+                    <!-- Right Side: Login Form -->
+                    <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                        <div class="text-center mb-8">
+                            <i class="fa-solid fa-dumbbell text-4xl text-pro-green mb-4"></i>
+                            <h2 class="text-3xl font-bold text-white">Member Login</h2>
+                        </div>
+                        <form id="login-form" onsubmit="handleLogin(event)" class="space-y-6">
+                            <div><label class="block text-gray-400 text-sm font-bold mb-2">Email</label><input
+                                    id="email" class="form-input w-full rounded-lg py-3 px-3" type="email"
+                                    placeholder="john@example.com" required></div>
+                            <div><label class="block text-gray-400 text-sm font-bold mb-2">Password</label><input
+                                    id="password" class="form-input w-full rounded-lg py-3 px-3" type="password"
+                                    placeholder="••••••••" required></div>
+                            <button type="submit" id="login-btn"
+                                class="w-full bg-pro-green hover:bg-white hover:text-black text-black font-bold py-3 rounded-lg shadow-[0_0_15px_rgba(46,204,113,0.3)] hover:shadow-[0_0_20px_rgba(255,255,255,0.4)] transition-all duration-300">
+                                Sign In
+                            </button>
+                            <p id="login-error" class="text-red-500 text-sm text-center mt-2 hidden"></p>
+                        </form>
+                        <div class="mt-8 text-center">
+                            <p class="text-gray-400">Don't have an account? <a href="register.html"
+                                    class="text-pro-green font-bold hover:underline ml-1">Register Now</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Shared Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/api.js"></script>
+    <script>
+        async function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const btn = document.getElementById('login-btn');
+            const errorEl = document.getElementById('login-error');
+
+            // Loading state
+            const originalText = btn.innerText;
+            btn.innerText = 'Signing In...';
+            btn.disabled = true;
+            errorEl.classList.add('hidden');
+
+            try {
+                const response = await api.login(email, password);
+
+                if (response.result === 'success') {
+                    // Store user info
+                    localStorage.setItem('user', JSON.stringify({
+                        email: response.email,
+                        isAdmin: response.isAdmin,
+                        name: response.user
+                    }));
+
+                    if (response.isAdmin) {
+                        window.location.href = 'admin.html';
+                    } else {
+                        window.location.href = 'index.html';
+                    }
+                } else {
+                    errorEl.innerText = response.message || 'Login failed';
+                    errorEl.classList.remove('hidden');
+                }
+            } catch (err) {
+                errorEl.innerText = 'An error occurred. Please try again.';
+                errorEl.classList.remove('hidden');
+            } finally {
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }
+        }
+    </script>
+</body>
+
+</html>

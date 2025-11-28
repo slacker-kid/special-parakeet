@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro-Fitness - Home</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'pro-dark': '#121212',
+                        'pro-gray': '#1E1E1E',
+                        'pro-green': '#2ECC71',
+                        'pro-green-hover': '#27AE60',
+                        'pro-text': '#E0E0E0'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-sans antialiased selection:bg-pro-green selection:text-black">
+
+    <!-- Navbar -->
+    <nav class="bg-pro-dark/95 backdrop-blur-md fixed w-full z-50 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+
+                <!-- Logo -->
+                <a href="index.html" class="flex-shrink-0 flex items-center cursor-pointer group">
+                    <i
+                        class="fa-solid fa-dumbbell text-3xl text-white mr-2 group-hover:text-pro-green transition-colors duration-300"></i>
+                    <span class="font-bold text-2xl text-white tracking-tight">Pro-Fitness</span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html"
+                            class="nav-link text-pro-green font-medium px-3 py-2 text-sm bg-transparent border-none cursor-pointer hover:text-white transition-colors">Home</a>
+                        <a href="workout.html"
+                            class="nav-link text-gray-300 font-medium px-3 py-2 text-sm bg-transparent border-none cursor-pointer hover:text-white transition-colors">Workout</a>
+                        <a href="pricing.html"
+                            class="nav-link text-gray-300 font-medium px-3 py-2 text-sm bg-transparent border-none cursor-pointer hover:text-white transition-colors">Pricing</a>
+                        <a href="rewards.html"
+                            class="nav-link text-gray-300 font-medium px-3 py-2 text-sm bg-transparent border-none cursor-pointer hover:text-white transition-colors">Rewards</a>
+                    </div>
+                </div>
+
+                <!-- Right Side: Search & Buttons -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <!-- Search -->
+                    <div class="relative search-container group">
+                        <input type="text" placeholder="Search"
+                            class="bg-pro-gray text-gray-300 rounded-md py-1.5 px-3 pl-3 pr-10 focus:outline-none focus:ring-0 border border-gray-700 transition-all duration-300 w-48 focus:w-64 placeholder-gray-500 text-sm">
+                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                            <i
+                                class="fa-solid fa-magnifying-glass text-gray-500 group-focus-within:text-pro-green transition-colors"></i>
+                        </div>
+                    </div>
+
+                    <!-- Auth Buttons -->
+                    <a href="login.html"
+                        class="text-white hover:text-pro-green font-medium px-4 py-2 text-sm border border-gray-600 rounded-md hover:border-pro-green transition-all duration-300 btn-glow">
+                        Login
+                    </a>
+                    <a href="register.html"
+                        class="bg-transparent text-white border border-gray-600 hover:bg-pro-green hover:border-pro-green hover:text-black font-medium px-4 py-2 rounded-md text-sm transition-all duration-300 btn-glow">
+                        Register
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" onclick="toggleMenu()"
+                        class="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden bg-pro-gray">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-700">
+                <a href="index.html"
+                    class="text-pro-green block w-full text-left px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="workout.html"
+                    class="text-gray-300 hover:text-white block w-full text-left px-3 py-2 rounded-md text-base font-medium">Workout</a>
+                <a href="pricing.html"
+                    class="text-gray-300 hover:text-white block w-full text-left px-3 py-2 rounded-md text-base font-medium">Pricing</a>
+                <a href="rewards.html"
+                    class="text-gray-300 hover:text-white block w-full text-left px-3 py-2 rounded-md text-base font-medium">Rewards</a>
+                <div class="mt-4 flex flex-col space-y-2 px-3">
+                    <input type="text" placeholder="Search"
+                        class="bg-black/20 text-gray-300 rounded-md py-2 px-3 border border-gray-600 focus:outline-none focus:border-pro-green w-full">
+                    <div class="flex space-x-2 mt-2">
+                        <a href="login.html"
+                            class="flex-1 text-center py-2 border border-gray-600 rounded-md text-white hover:border-pro-green">Login</a>
+                        <a href="register.html"
+                            class="flex-1 text-center py-2 bg-pro-green text-black font-bold rounded-md">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTAINER -->
+    <div class="pt-20">
+
+        <!-- ================= HOME PAGE ================= -->
+        <div id="home" class="page-section active" style="display: block; opacity: 1;">
+            <main class="pt-10 pb-16">
+                <!-- Header Section -->
+                <section class="max-w-4xl mx-auto text-center px-4 mb-16 fade-in-up">
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-pro-green mb-6 tracking-tight drop-shadow-lg">
+                        Welcome to Pro-Fitness
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-400 leading-relaxed max-w-3xl mx-auto">
+                        Are you ready to embark on a journey of transformation and total well-being? Look no further!
+                        <span class="text-white font-semibold">Pro-Fitness</span> is your ultimate destination for
+                        achieving your fitness goals.
+                    </p>
+                </section>
+
+                <!-- Content Split: Image & Features -->
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex flex-col lg:flex-row items-center lg:items-start gap-12">
+                        <!-- Left Column: Image -->
+                        <div class="w-full lg:w-5/12 fade-in-up" style="transition-delay: 200ms;">
+                            <div class="relative group">
+                                <div
+                                    class="absolute inset-0 bg-pro-green rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-500">
+                                </div>
+                                <label for="hero-upload" class="cursor-pointer block relative">
+                                    <img id="hero-image-preview" src="assets/hero-image.png" alt="Fitness Motivation"
+                                        class="relative rounded-2xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-700 ease-in-out w-full object-cover h-[500px] lg:h-[600px] border border-gray-800 transform group-hover:scale-[1.02] z-10">
+                                    <div
+                                        class="absolute inset-0 flex flex-col items-center justify-center bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl z-20 backdrop-blur-sm">
+                                        <i class="fa-solid fa-camera text-4xl text-pro-green mb-3 animate-bounce"></i>
+                                        <p class="text-white font-bold text-lg">Change Image</p>
+                                        <p class="text-gray-300 text-sm mt-1">Click to upload your own</p>
+                                    </div>
+                                    <input type="file" id="hero-upload" accept="image/*" class="hidden"
+                                        onchange="updateHeroImage(event)">
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Features Text -->
+                        <div class="w-full lg:w-7/12 space-y-8 fade-in-up" style="transition-delay: 400ms;">
+                            <h2 class="text-3xl md:text-4xl font-bold text-pro-green mb-8 relative inline-block">
+                                Why Choose Pro-Fitness?
+                                <span class="absolute bottom-0 left-0 w-1/3 h-1 bg-white rounded-full mt-2"></span>
+                            </h2>
+                            <div class="group hover:bg-white/5 p-4 rounded-xl transition-colors duration-300">
+                                <h3 class="text-xl font-bold text-pro-green mb-2 flex items-center gap-2"><i
+                                        class="fa-solid fa-user-doctor text-sm"></i> Expert Guidance</h3>
+                                <p class="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">Our
+                                    certified trainers are here to guide you every step of the way.</p>
+                            </div>
+                            <div class="group hover:bg-white/5 p-4 rounded-xl transition-colors duration-300">
+                                <h3 class="text-xl font-bold text-pro-green mb-2 flex items-center gap-2"><i
+                                        class="fa-solid fa-person-running text-sm"></i> Variety of Workouts</h3>
+                                <p class="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">
+                                    Experience HIIT, yoga, strength training, dance, Pilates, and more.</p>
+                            </div>
+                            <div class="group hover:bg-white/5 p-4 rounded-xl transition-colors duration-300">
+                                <h3 class="text-xl font-bold text-pro-green mb-2 flex items-center gap-2"><i
+                                        class="fa-solid fa-building text-sm"></i> State-of-the-Art Facilities</h3>
+                                <p class="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">
+                                    Cutting-edge gyms equipped with top-of-the-line fitness equipment.</p>
+                            </div>
+                            <div class="pt-4">
+                                <a href="workout.html"
+                                    class="inline-block bg-pro-green text-black font-bold text-lg px-8 py-3 rounded-full hover:bg-white transition-all duration-300 shadow-[0_0_20px_rgba(46,204,113,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] transform hover:-translate-y-1">
+                                    Start Your Journey <i class="fa-solid fa-arrow-right ml-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <footer class="bg-black py-8 border-t border-gray-900 mt-12 text-center text-gray-600 text-sm">
+                <p>&copy; 2024 Pro-Fitness. All rights reserved.</p>
+            </footer>
+        </div>
+
+    </div>
+
+    <!-- Shared Scripts -->
+    <script src="js/main.js"></script>
+    <script>
+        // --- Image Upload ---
+        function updateHeroImage(event) {
+            const input = event.target;
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const preview = document.getElementById('hero-image-preview');
+                    preview.src = e.target.result;
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+    <!-- Profile Script -->
+    <script src="js/profile.js"></script>
+</body>
+
+</html>
